@@ -33,7 +33,7 @@
     <EditText
         android:id="@+id/login_email"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:ems="10"
         android:inputType="textEmailAddress"
@@ -57,7 +57,7 @@
     <EditText
         android:id="@+id/login_senha"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:ems="10"
         android:inputType="textPassword"

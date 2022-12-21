@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //binding.loginSenha.inputType = TYPE_TEXT_VARIATION_PASSWORD or TYPE_CLASS_TEXT
+        //navegarTelas(2)
         binding.btnLogin.setOnClickListener{
             loginUser()
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.linkCadastrarSe.setOnClickListener {
-            navegarTelaCad()
+            navegarTelas(1)
 
         }
     }
@@ -57,18 +57,28 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Preencha o campo Senha!", Toast.LENGTH_SHORT).show()
 
         }else{
-            Toast.makeText(this, "Login Efetuado!", Toast.LENGTH_SHORT).show()
-            Timer().schedule(2000){
-                println("Login sucesso!!")
-                println("Email: "+ email_user)
-                println("Senha: "+ senha_user)
+            if ((email_user == "f") and (senha_user == "1")) {
+                Toast.makeText(this, "Login efetuado!", Toast.LENGTH_SHORT).show()
+                Timer().schedule(2000) {
+                    println("Login sucesso!!")
+                    println("Email: " + email_user)
+                    println("Senha: " + senha_user)
+                    navegarTelas(2)
+
+                }
+            }else{
+                Toast.makeText(this, "Login e Senha ainda não cadastrados!!", Toast.LENGTH_SHORT).show()
 
             }
         }
     }
-    private fun navegarTelaCad(){
-        val cad_user = Intent(this, CadUser::class.java)
-        startActivity(cad_user)
+    private fun navegarTelas(codigo: Number){
+        if(codigo == 1){
+            startActivity(Intent(this, CadUser::class.java))
 
+        }else if(codigo == 2){
+            startActivity(Intent(this, CadUrna::class.java))
+
+        }
     }
 }

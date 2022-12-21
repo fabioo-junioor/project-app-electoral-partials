@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".CadUrna"
+    tools:ignore="SpeakableTextPresentCheck">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_cad_urna_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:text="CADASTRAR DADOS"
+            android:textAlignment="center"
+            android:textColor="#363636"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_cad_zona"
+                android:layout_width="205dp"
+                android:layout_height="45sp"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:text="Zona:"
+                android:textColor="#363636"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_cad_sessao"
+                android:layout_width="205dp"
+                android:layout_height="45sp"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:text="Sessão:"
+                android:textColor="#363636"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_cad_urna_zona"
+                android:layout_width="205sp"
+                android:layout_height="50sp"
+                android:ems="10"
+                android:hint="20"
+                android:inputType="number"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/input_cad_urna_sessao"
+                android:layout_width="205sp"
+                android:layout_height="50sp"
+                android:ems="10"
+                android:hint="123"
+                android:inputType="number"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_cad_pres_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:paddingTop="15sp"
+            android:text="Presidente"
+            android:textAlignment="center"
+            android:textColor="#363636"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
