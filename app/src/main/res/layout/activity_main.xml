@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#575757"
+    android:focusableInTouchMode="false"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,8 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
         android:text="Email:"
-        android:textColor="#363636"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -25,7 +31,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:text="Senha:"
-        android:textColor="#363636"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email" />
@@ -33,11 +39,13 @@
     <EditText
         android:id="@+id/login_email"
         android:layout_width="350dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginStart="30dp"
+        android:background="@drawable/minhas_cores_inputs"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:textColor="#000"
+        android:paddingLeft="10sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_email"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -48,20 +56,27 @@
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#363636"
+        android:backgroundTint="#989898"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
         android:text="ENTRAR"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_box_mostrar_senha_login" />
 
     <EditText
         android:id="@+id/login_senha"
         android:layout_width="350dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginStart="30dp"
+        android:background="@drawable/minhas_cores_inputs"
         android:ems="10"
         android:inputType="textPassword"
-        android:textColor="#000"
+        android:paddingLeft="10sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_senha" />
 
@@ -70,8 +85,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:buttonTint="#FDFDFD"
+        android:checked="false"
+        android:clickable="false"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
         android:text="Mostrar Senha"
-        android:textColor="#363636"
+        android:textColor="#FFFFFF"
+        app:centerIfNoTextEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_senha" />
 
@@ -102,6 +125,10 @@
         android:paddingEnd="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
         android:text="CADASTRAR-SE"
         android:textColor="#FF0000"
         android:textSize="14sp"

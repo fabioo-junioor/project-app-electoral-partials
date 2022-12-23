@@ -48,7 +48,7 @@ class CadUser : AppCompatActivity() {
 
             }else{
                 Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
-                Timer().schedule(2000){
+                Timer().schedule(3000){
                     println("Login sucesso!!")
                     println("Nome: "+ cad_nome)
                     println("Email: "+ cad_email)

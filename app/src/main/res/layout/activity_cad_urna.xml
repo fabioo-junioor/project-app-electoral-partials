@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#575757"
     tools:context=".CadUrna"
     tools:ignore="SpeakableTextPresentCheck">
 
@@ -21,9 +22,43 @@
             android:paddingBottom="20sp"
             android:text="CADASTRAR DADOS"
             android:textAlignment="center"
-            android:textColor="#363636"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"/>
+
+        <TextView
+            android:id="@+id/text_cad_localizacao"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
+            android:text="Localização"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"/>
+
+        <Spinner
+            android:id="@+id/input_select_estados"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/input_select_cidades"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,9 +72,13 @@
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
                 android:text="Zona:"
-                android:textColor="#363636"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"/>
 
             <TextView
                 android:id="@+id/text_cad_sessao"
@@ -48,9 +87,13 @@
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
                 android:text="Sessão:"
-                android:textColor="#363636"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"/>
         </LinearLayout>
 
         <LinearLayout
@@ -60,20 +103,47 @@
 
             <EditText
                 android:id="@+id/input_cad_urna_zona"
-                android:layout_width="205sp"
+                android:layout_width="190sp"
                 android:layout_height="50sp"
+                android:layout_margin="3sp"
+                android:background="@drawable/minhas_cores_inputs"
+                android:elevation="10dp"
                 android:ems="10"
-                android:hint="20"
+                android:hint="123"
                 android:inputType="number"
+                android:paddingLeft="10sp"
+                android:radius="5dp"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="16sp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
                 android:id="@+id/input_cad_urna_sessao"
-                android:layout_width="205sp"
+                android:layout_width="190sp"
                 android:layout_height="50sp"
+                android:layout_margin="3sp"
+                android:background="@drawable/minhas_cores_inputs"
+                android:elegantTextHeight="false"
+                android:elevation="10dp"
+                android:ellipsize="none"
                 android:ems="10"
                 android:hint="123"
                 android:inputType="number"
+                android:paddingLeft="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
@@ -81,12 +151,80 @@
             android:id="@+id/text_cad_pres_titulo"
             android:layout_width="match_parent"
             android:layout_height="50sp"
+            android:layout_marginTop="30sp"
             android:paddingTop="15sp"
+            android:selectAllOnFocus="false"
             android:text="Presidente"
             android:textAlignment="center"
-            android:textColor="#363636"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"/>
+
+        <Spinner
+            android:id="@+id/input_select_presidente"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown"
+            android:splitMotionEvents="false" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_total_pres"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Total Votos"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_brancos_pres"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Votos Brancos"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_nulos_pres"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Votos Nulos"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </ScrollView>
