@@ -226,5 +226,156 @@
             android:textColorHint="#FFFFFF"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/text_cad_gov_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginTop="30sp"
+            android:paddingTop="15sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="Governador"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/input_select_governador"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:spinnerMode="dropdown"
+            android:layout_margin="3sp" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_total_gov"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Total Votos"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textSize="16sp"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_brancos_gov"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Votos Brancos"
+            android:paddingLeft="10sp"
+            android:inputType="number"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_nulos_gov"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Votos Nulos"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/text_cad_sen_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginTop="30sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="Senador"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/input_select_senador"
+            android:layout_width="match_parent"
+            android:layout_height="50sp" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_total_sen"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Total Votos"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_brancos_sen"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Votos Brancos"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/input_cad_urna_nulos_sen"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:hint="Votos Nulos"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
     </LinearLayout>
 </ScrollView>

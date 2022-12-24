@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //navegarTelas(2)
+        navegarTelas(2)
         binding.btnLogin.setOnClickListener{
             loginUser()
 
