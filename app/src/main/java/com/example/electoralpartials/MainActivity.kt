@@ -6,7 +6,13 @@ import android.os.Bundle
 import android.text.InputType.*
 import android.text.TextUtils
 import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.electoralpartials.databinding.ActivityMainBinding
+import org.json.JSONArray
+import org.json.JSONException
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -57,20 +63,43 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Preencha o campo Senha!", Toast.LENGTH_SHORT).show()
 
         }else{
-            if ((email_user == "f") and (senha_user == "1")) {
-                Toast.makeText(this, "Login efetuado!", Toast.LENGTH_SHORT).show()
-                Timer().schedule(2000) {
-                    println("Login sucesso!!")
-                    println("Email: " + email_user)
-                    println("Senha: " + senha_user)
-                    navegarTelas(2)
+           verificaUsuario(email_user, senha_user)
+
+        }
+    }
+    private fun verificaUsuario(email_user: String, senha_user: String) {
+        val stringRequest = StringRequest(Request.Method.GET,
+            url+"/login_user.php?email="+email_user+"&&senha="+senha_user,
+            { s ->
+                try {
+                    val obj = JSONArray(s)
+                    for (i in 0..obj.length()-1) {
+                        val objectUser = obj.getJSONObject(i)
+                        if(Integer.parseInt(objectUser.get("idUsuario").toString()) != 0){
+                            println("IdUsuario: "+ objectUser.get("idUsuario").toString())
+                            Toast.makeText(this, "Login efetuado", Toast.LENGTH_SHORT).show()
+                            Timer().schedule(2000){
+                                navegarTelas(2)
+
+                            }
+                        }else{
+                            Toast.makeText(this, "Usuario não cadastrado", Toast.LENGTH_SHORT).show()
+                            Timer().schedule(2000){
+
+                            }
+                        }
+                    }
+                } catch (e: JSONException){
+                    e.printStackTrace()
 
                 }
-            }else{
-                Toast.makeText(this, "Login e Senha ainda não cadastrados!!", Toast.LENGTH_SHORT).show()
+            }, {
+                    error: VolleyError? -> println("Erro ")
 
-            }
-        }
+            })
+        val requestQueue = Volley.newRequestQueue(this)
+        requestQueue.add<String>(stringRequest)
+
     }
     private fun navegarTelas(codigo: Number){
         if(codigo == 1){

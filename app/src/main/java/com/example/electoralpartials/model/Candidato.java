@@ -1,17 +1,8 @@
 package com.example.electoralpartials.model;
 
-public class Cidade {
-    private String idMunicipio;
+public class Candidato {
     private String nome;
 
-    public String getId() {
-        return idMunicipio;
-
-    }
-    public void setId(String id) {
-        this.idMunicipio = id;
-
-    }
     public String getNome() {
         return nome;
 

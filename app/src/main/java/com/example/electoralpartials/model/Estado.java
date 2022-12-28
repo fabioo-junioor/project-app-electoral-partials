@@ -1,7 +1,7 @@
 package com.example.electoralpartials.model;
 
 public class Estado {
-    private String id;
+    private String idEstado;
     private String nome;
     private Boolean escolhido = false;
 
@@ -14,11 +14,11 @@ public class Estado {
 
     }
     public String getId() {
-        return id;
+        return idEstado;
 
     }
     public void setId(String id) {
-        this.id = id;
+        this.idEstado = id;
 
     }
     public String getNome() {

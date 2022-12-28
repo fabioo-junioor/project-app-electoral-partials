@@ -10,6 +10,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.electoralpartials.databinding.ActivityCadUrnaBinding
+import com.example.electoralpartials.model.Candidato
 import com.example.electoralpartials.model.Cidade
 import com.example.electoralpartials.model.Estado
 import org.json.JSONArray
@@ -22,6 +23,10 @@ val url = "http://10.0.2.2/electoralPartialsBackEnd"
 var estadoEscolhido: String = ""
 var cidadeEscolhida: String = ""
 var presidenteEscolhido: String = ""
+var governadorEscolhido: String = ""
+var senadorEscolhido: String = ""
+var deputadoFedEscolhido: String = ""
+var deputadoEstEscolhido: String = ""
 
 class CadUrna : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,18 +39,17 @@ class CadUrna : AppCompatActivity() {
         mostrarListaEstados(estados)
 
 
-        val presidentes = mutableListOf("Selecione um presidente", "Bolsonaro", "Lula")
+        val presidentes = mutableListOf("Selecione um presidente")
         val spinnerPresidentes: Spinner = binding.inputSelectPresidente
-        geradorSpinnerCandidatos(presidentes, spinnerPresidentes)
+        mostrarListaCandidatos(presidentes, spinnerPresidentes, 1)
 
-        //val governadores = arrayOf("Selecione um governador", "Carlos", "Pedro")
-        //val spinnerGovernadores: Spinner = binding.inputSelectGovernador
-        //geradorListas(governadores, spinnerGovernadores)
+        val governadores = mutableListOf("Selecione um governador")
+        val spinnerGovernadores: Spinner = binding.inputSelectGovernador
+        mostrarListaCandidatos(governadores, spinnerGovernadores, 2)
 
-        //val senadores = arrayOf("Selecione um Senador", "João", "Farias")
-        //val spinnerSenadores: Spinner = binding.inputSelectSenador
-        //geradorListas(senadores, spinnerSenadores)
-
+        val senadores = mutableListOf("Selecione um Senador")
+        val spinnerSenadores: Spinner = binding.inputSelectSenador
+        mostrarListaCandidatos(senadores, spinnerSenadores, 3)
 
 
     }
@@ -58,7 +62,7 @@ class CadUrna : AppCompatActivity() {
                         val objectEstado = obj.getJSONObject(i)
                         val estado = Estado()
                         estado.setNome(objectEstado.get("nome").toString())
-                        estado.setId(objectEstado.get("id").toString())
+                        estado.setId(objectEstado.get("idEstado").toString())
 
                         estados.add(estado.nome.toString())
 
@@ -87,17 +91,46 @@ class CadUrna : AppCompatActivity() {
                     val obj = JSONArray(s)
                     for (i in 0..obj.length()-1) {
                         val objectCidade = obj.getJSONObject(i)
-                        //val cidade = Estado(objectEstado.getString("nome"))
                         val cidade = Cidade()
 
                         cidade.setNome(objectCidade.get("nome").toString())
-                        cidade.setId(objectCidade.get("idEstado").toString())
+                        cidade.setId(objectCidade.get("idMunicipio").toString())
 
                         cidades.add(cidade.nome.toString())
 
                     }
                     val spinnerCidades: Spinner = binding.inputSelectCidades
                     geradorSpinnerCidade(cidades, spinnerCidades)
+
+                } catch (e: JSONException){
+                    e.printStackTrace()
+
+                }
+            }, {
+                    error: VolleyError? -> println("Erro ")
+
+            })
+        val requestQueue = Volley.newRequestQueue(this)
+        requestQueue.add<String>(stringRequest)
+
+    }
+    private fun mostrarListaCandidatos(candidatos: MutableList<String>,  spinner: Spinner, categoria: Int
+    ) {
+        val stringRequest = StringRequest(com.android.volley.Request.Method.GET,
+            url+"/select_candidato.php?categoria="+categoria,
+            { s ->
+                try {
+                    val obj = JSONArray(s)
+                    for (i in 0..obj.length()-1) {
+                        val objectCandidato = obj.getJSONObject(i)
+                        val candidato = Candidato()
+                        candidato.setNome(objectCandidato.get("nome").toString())
+
+                        candidatos.add(candidato.nome.toString())
+
+                    }
+                    geradorSpinnerCandidatos(candidatos, spinner, categoria)
+
 
                 } catch (e: JSONException){
                     e.printStackTrace()
@@ -142,14 +175,33 @@ class CadUrna : AppCompatActivity() {
             }
         }
     }
-    private fun geradorSpinnerCandidatos(vetor: MutableList<String>, spinner: Spinner) {
+    private fun geradorSpinnerCandidatos(vetor: MutableList<String>, spinner: Spinner, categoria: Int) {
         val arrayAdapter = ArrayAdapter<String>(this, R.layout.style_selects, vetor)
         spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                println("Candidato escolhido: "+ vetor[p2])
-                presidenteEscolhido = vetor[p2]
 
+                if(categoria == 1){
+                    println("Presidente escolhido: "+ vetor[p2])
+                    presidenteEscolhido = vetor[p2]
+
+                }else if(categoria == 2){
+                    println("Governador escolhido: "+ vetor[p2])
+                    governadorEscolhido = vetor[p2]
+
+                }else if(categoria == 3){
+                    println("Senador escolhido: "+ vetor[p2])
+                    senadorEscolhido = vetor[p2]
+
+                }else if(categoria == 4){
+                    println("Deputado Federal escolhido: "+ vetor[p2])
+                    deputadoFedEscolhido = vetor[p2]
+
+                }else if(categoria == 5){
+                    println("Deputado Estadual escolhido: "+ vetor[p2])
+                    deputadoEstEscolhido = vetor[p2]
+
+                }
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")

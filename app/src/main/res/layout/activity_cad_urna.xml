@@ -321,7 +321,8 @@
         <Spinner
             android:id="@+id/input_select_senador"
             android:layout_width="match_parent"
-            android:layout_height="50sp" />
+            android:layout_height="50sp"
+            android:layout_margin="3sp" />
 
         <EditText
             android:id="@+id/input_cad_urna_total_sen"
