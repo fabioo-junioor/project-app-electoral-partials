@@ -1,5 +1,6 @@
 package com.example.electoralpartials
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -51,7 +52,29 @@ class CadUrna : AppCompatActivity() {
         val spinnerSenadores: Spinner = binding.inputSelectSenador
         mostrarListaCandidatos(senadores, spinnerSenadores, 3)
 
+        val depFederal = mutableListOf("Selecione um Deputado Federal")
+        val spinnerDepFederal: Spinner = binding.inputSelectDepFed
+        mostrarListaCandidatos(depFederal, spinnerDepFederal, 4)
 
+        val depEstadual = mutableListOf("Selecione um Deputado Estadual")
+        val spinnerDepEstadual: Spinner = binding.inputSelectDepEst
+        mostrarListaCandidatos(depEstadual, spinnerDepEstadual, 5)
+
+
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.button_graficos_nav -> {
+                    val parciaisGraficas = Intent(this, ParciaisGraficas::class.java)
+                    println("MUDOU PARA TELA GRAFICOS!")
+                    startActivity(parciaisGraficas)
+                    true
+                }
+                else -> {
+                    false
+
+                }
+            }
+        }
     }
     private fun mostrarListaEstados(estados: MutableList<String>) {
         val stringRequest = StringRequest(com.android.volley.Request.Method.GET, url+"/select_estados.php",
