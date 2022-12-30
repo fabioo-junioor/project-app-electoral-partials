@@ -2,13 +2,14 @@
 header('Content-Type: application/json; Charset=UTF-8');
 include("connection.php");
 
+$categoria = $_GET['categoria'];
 
-$sql = "SELECT * FROM estado";
+$sql = "SELECT * FROM candidatos WHERE categoria = '$categoria'";
 $executa = mysqli_query($con, $sql) or die (mysqli_error());
 $saida = array();
 
 while($row = mysqli_fetch_array($executa)){
-    array_push($saida, array("idEstado"=>$row['idEstado'], "nome"=>$row['nome']));
+    array_push($saida, array("nome"=>$row['nome'], "nome"=>$row['nome']));
 
 }
 

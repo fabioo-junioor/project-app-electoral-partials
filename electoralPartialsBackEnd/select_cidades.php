@@ -6,13 +6,13 @@ $nomeEstado = $_GET['nomeEstado'];
 //$nomeEstado = "para";
 
 $sql = "SELECT * FROM municipio WHERE idEstado = (
-    SELECT id FROM estado WHERE nome = '$nomeEstado'
+    SELECT idEstado FROM estado WHERE nome = '$nomeEstado'
 )";
 $executa = mysqli_query($con, $sql) or die (mysqli_error());
 $saida = array();
 
 while($row = mysqli_fetch_array($executa)){
-    array_push($saida, array("idEstado"=>$row['idEstado'], "nome"=>$row['nome'], ));
+    array_push($saida, array("idMunicipio"=>$row['idMunicipio'], "nome"=>$row['nome'], ));
 
 }
 
