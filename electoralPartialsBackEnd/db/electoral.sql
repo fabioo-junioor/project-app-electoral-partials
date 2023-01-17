@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 30-Dez-2022 às 03:41
+-- Tempo de geração: 17-Jan-2023 às 00:23
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -79,10 +79,46 @@ INSERT INTO `candidatos` (`idCandidato`, `nome`, `numero`, `categoria`, `sigla`,
 DROP TABLE IF EXISTS `comprovante`;
 CREATE TABLE IF NOT EXISTS `comprovante` (
   `idComprovante` int(11) NOT NULL AUTO_INCREMENT,
-  `dados` text NOT NULL,
-  `idDadosUrna` int(11) NOT NULL,
-  PRIMARY KEY (`idComprovante`)
+  `imagem` text NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `numSessao` int(11) NOT NULL,
+  PRIMARY KEY (`idComprovante`),
+  KEY `idUser` (`idUser`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `dadosurna`
+--
+
+DROP TABLE IF EXISTS `dadosurna`;
+CREATE TABLE IF NOT EXISTS `dadosurna` (
+  `idDadosUrna` int(11) NOT NULL AUTO_INCREMENT,
+  `numZona` int(11) NOT NULL,
+  `numSessao` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idCidade` int(11) NOT NULL,
+  `idCandidato` int(11) NOT NULL,
+  `totalVotosCandidato` int(11) NOT NULL,
+  `totalVotosBrancos` int(11) NOT NULL,
+  `totalVotosNulos` int(11) NOT NULL,
+  `registroValido` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idDadosUrna`),
+  KEY `idUser` (`idUser`),
+  KEY `idCidade` (`idCidade`),
+  KEY `idCandidato` (`idCandidato`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `dadosurna`
+--
+
+INSERT INTO `dadosurna` (`idDadosUrna`, `numZona`, `numSessao`, `idUser`, `idCidade`, `idCandidato`, `totalVotosCandidato`, `totalVotosBrancos`, `totalVotosNulos`, `registroValido`) VALUES
+(21, 20, 15, 4, 4948, 1, 100, 0, 0, 0),
+(20, 20, 5, 4, 4948, 0, 0, 77, 100, 0),
+(18, 20, 5, 4, 4948, 3, 200, 0, 0, 0),
+(19, 20, 5, 4, 4948, 1, 200, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5740,7 +5776,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -5752,7 +5788,8 @@ INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (3, 'maria', 'maria@bol.com', '641654'),
 (4, 'carlos', 'carlos@bol.com', '6das4'),
 (5, 'mario', 'mario@bol.com', '123459'),
-(7, 'raul', 'raul@bol.com', '33335ww');
+(7, 'raul', 'raul@bol.com', '33335ww'),
+(8, '', '', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -17,6 +17,8 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 private  lateinit var  binding: ActivityMainBinding
+var emailLogado: String = ""
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                         if(Integer.parseInt(objectUser.get("idUsuario").toString()) != 0){
                             println("IdUsuario: "+ objectUser.get("idUsuario").toString())
                             Toast.makeText(this, "Login efetuado", Toast.LENGTH_SHORT).show()
+                            emailLogado = email_user
                             Timer().schedule(2000){
                                 navegarTelas(2)
 

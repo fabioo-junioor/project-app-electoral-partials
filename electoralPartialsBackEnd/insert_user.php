@@ -8,7 +8,7 @@ $senha = $_GET["senha"];
 
 /*
 $nome = "mario";
-$senha = "121212";
+$senha = "123459";
 $email = "mario@bol.com";
 */
 $sql = "SELECT `idUsuario` FROM usuario WHERE email = '$email'";
