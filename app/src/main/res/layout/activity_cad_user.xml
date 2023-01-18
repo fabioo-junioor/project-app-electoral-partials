@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_cad_titulo" />
 
     <TextView
-        android:id="@+id/textCadEmail"
+        android:id="@+id/text_cad_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/input_cad_nome" />
 
     <TextView
-        android:id="@+id/textCadSenha"
+        android:id="@+id/text_cad_senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -96,7 +96,7 @@
         android:paddingLeft="10sp"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCadSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/text_cad_senha" />
 
     <EditText
         android:id="@+id/input_cad_email"
@@ -109,7 +109,7 @@
         android:paddingLeft="10sp"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCadEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/text_cad_email" />
 
     <Button
         android:id="@+id/button_cad_salvar"

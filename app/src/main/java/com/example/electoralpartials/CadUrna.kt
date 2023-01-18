@@ -2,6 +2,7 @@ package com.example.electoralpartials
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -29,13 +30,7 @@ val url = "http://10.0.2.2/electoralPartialsBackEnd"
 var estadoEscolhido: String = ""
 var cidadeEscolhida: String = ""
 var presidenteEscolhido: String = ""
-/*
-var numZona: Int = 0
-var numSessao: Int = 0
-var totalVotos: Int = 0
-var votosBrancos: Int = 0
-var votosNulos: Int = 0
-*/
+
 class CadUrna : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +53,34 @@ class CadUrna : AppCompatActivity() {
             val votosBrancos = binding.inputCadUrnaBrancos.text.toString()
             val votosNulos = binding.inputCadUrnaNulos.text.toString()
 
-            cadastraDadosUrna("33", "20", "1000", "10", "5")
+            if(TextUtils.isEmpty(numSessao)){
+                Toast.makeText(this, "Preencha o campo Sessao!", Toast.LENGTH_SHORT).show()
 
+            }else if(TextUtils.isEmpty(numZona)) {
+                Toast.makeText(this, "Preencha o campo Zona!", Toast.LENGTH_SHORT).show()
+
+            }else{
+                if(!(TextUtils.isEmpty(totalVotos))) {
+                    if(!(TextUtils.isEmpty(votosBrancos))){
+                        Toast.makeText(this, "Escolha votos brancos ou total votos", Toast.LENGTH_SHORT).show()
+
+                    }else if(!(TextUtils.isEmpty(votosNulos))){
+                        Toast.makeText(this, "Escolha votos nulos ou total votos", Toast.LENGTH_SHORT).show()
+
+                    }else{
+                        cadastraDadosUrna(numZona, numSessao, totalVotos, votosBrancos, votosNulos, presidenteEscolhido)
+
+                    }
+                }else{
+                    if(!(TextUtils.isEmpty(votosBrancos)) && !(TextUtils.isEmpty(votosNulos))){
+                        cadastraDadosUrna(numZona, numSessao, totalVotos, votosBrancos, votosNulos, "vazio")
+
+                    }else{
+                        Toast.makeText(this, "Preencha brancos e nulos ou total votos", Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+            }
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -78,24 +99,27 @@ class CadUrna : AppCompatActivity() {
         }
     }
     private  fun cadastraDadosUrna(numZona: String, numSessao: String, totalVotos: String,
-        votosBrancos: String, votosNulos: String) {
+        votosBrancos: String, votosNulos: String, escolhaPres: String) {
 
         val stringRequest = StringRequest(Request.Method.GET,
-            url+"/insert_cad_urna.php?numZona="+numZona+"&&numSessao="+numSessao+"&&totalVotos="+totalVotos+"&&votosBrancos"+votosBrancos+"&&votosNulos"+votosNulos+"&&nomeCandidato"+"Jair Messias Bolsonaro"+"&&emailUser"+"pedro@bol.com"+"&&nomeCidade"+"Bujari"+"&&regValido"+"0",
+            url+"/insert_cad_urna.php?numZona="+numZona+"&&numSessao="+numSessao+
+                    "&&totalVotos="+totalVotos+"&&votosBrancos="+votosBrancos+
+                    "&&votosNulos="+votosNulos+"&&nomeCandidato="+escolhaPres+
+                    "&&emailUser="+emailLogado+"&&nomeCidade="+cidadeEscolhida+"&&regValido="+"0",
             { s ->
                 try {
                     val obj = JSONArray(s)
                     for (i in 0..obj.length()-1) {
                         val objectUrna = obj.getJSONObject(i)
-                        if(objectUrna.get("numSessao").toString() != "null"){
-                            println("numSessao: "+ objectUrna.get("numSessao").toString())
-                            Toast.makeText(this, "Sessao já cadastrado por outro usuario", Toast.LENGTH_SHORT).show()
+                        if(objectUrna.get("idDadosUrna").toString() != "null"){
+                            println("idDadosUrna: "+ objectUrna.get("idDadosUrna").toString())
+                            Toast.makeText(this, "Presidente já registrado para essa sessao", Toast.LENGTH_SHORT).show()
                             Timer().schedule(3000){
-
 
                             }
                         }else{
                             Toast.makeText(this, "Cadastro realizado!", Toast.LENGTH_SHORT).show()
+                            println("idDadosUrna: "+ objectUrna.get("idDadosUrna").toString())
                             Timer().schedule(2000){
                                 /*println("Nome: "+ cad_nome)
                                 println("Email: "+ cad_email)
@@ -104,6 +128,22 @@ class CadUrna : AppCompatActivity() {
 
                             }
                         }
+                        /*
+                        if((objectUrna.get("totalVotosBrancos").toString() != "null") && (objectUrna.get("totalVotosNulos").toString() != "null")){
+                            println("totalVotosBrancos: "+ objectUrna.get("totalVotosBrancos").toString())
+                            println("totalVotosNulos: "+ objectUrna.get("totalVotosNulos").toString())
+                            Toast.makeText(this, "Votos brancos e nulos já registrado para essa sessao", Toast.LENGTH_SHORT).show()
+                            Timer().schedule(2000){
+
+                            }
+                        }else{
+                            Toast.makeText(this, "Votos brancos e nulos registrado!", Toast.LENGTH_SHORT).show()
+                            println("totalVotosBrancos: "+ objectUrna.get("totalVotosBrancos").toString())
+                            println("totalVotosNulos: "+ objectUrna.get("totalVotosNulos").toString())
+                            Timer().schedule(2000){
+
+                            }
+                        }*/
                     }
                 } catch (e: JSONException){
                     e.printStackTrace()
@@ -214,8 +254,8 @@ class CadUrna : AppCompatActivity() {
         spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                println("Estado escolhido: "+ vetor[p2])
                 estadoEscolhido = removeAccent(vetor[p2]).toString()
+                println("Estado escolhido: "+ estadoEscolhido)
 
                 val cidades = mutableListOf<String>()
                 mostrarListaCidades(cidades)
@@ -231,8 +271,8 @@ class CadUrna : AppCompatActivity() {
         spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                println("Cidade escolhida: "+ vetor[p2])
-                cidadeEscolhida = vetor[p2]
+                cidadeEscolhida = removeAccent(vetor[p2]).toString()
+                println("Cidade escolhida: "+ cidadeEscolhida)
 
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {

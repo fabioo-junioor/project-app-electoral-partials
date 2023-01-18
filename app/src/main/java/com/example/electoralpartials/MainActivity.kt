@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        navegarTelas(2)
+        //navegarTelas(2)
         binding.btnLogin.setOnClickListener{
             loginUser()
 
@@ -80,10 +80,18 @@ class MainActivity : AppCompatActivity() {
                         if(Integer.parseInt(objectUser.get("idUsuario").toString()) != 0){
                             println("IdUsuario: "+ objectUser.get("idUsuario").toString())
                             Toast.makeText(this, "Login efetuado", Toast.LENGTH_SHORT).show()
-                            emailLogado = email_user
-                            Timer().schedule(2000){
-                                navegarTelas(2)
+                            if(Integer.parseInt(objectUser.get("idUsuario").toString()) == 1){
+                                emailLogado = email_user
+                                Timer().schedule(2000){
+                                    navegarTelas(3)
 
+                                }
+                            }else{
+                                emailLogado = email_user
+                                Timer().schedule(2000){
+                                    navegarTelas(2)
+
+                                }
                             }
                         }else{
                             Toast.makeText(this, "Usuario não cadastrado", Toast.LENGTH_SHORT).show()
@@ -110,6 +118,9 @@ class MainActivity : AppCompatActivity() {
 
         }else if(codigo == 2){
             startActivity(Intent(this, CadUrna::class.java))
+
+        }else if(codigo == 3){
+            startActivity(Intent(this, CadAdmin::class.java))
 
         }
     }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#575757"
+    tools:context=".CadAdmin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_cad_cand_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="20sp"
+            android:text="CADASTRAR CANDIDATO"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5" />
+
+        <TextView
+            android:id="@+id/text_cad_cand_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="Nome:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cad_cand_titulo" />
+
+        <EditText
+            android:id="@+id/input_cad_cand_nome"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="28dp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cad_cand_nome" />
+
+        <TextView
+            android:id="@+id/text_cad_cand_sigla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="Sigla:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cad_cand_nome" />
+
+        <EditText
+            android:id="@+id/input_cad_cand_sigla"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cad_cand_sigla" />
+
+        <TextView
+            android:id="@+id/text_cad_cand_numero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="Numero:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cad_cand_sigla" />
+
+        <EditText
+            android:id="@+id/input_cad_cand_numero"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:ems="10"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cad_cand_numero" />
+
+        <Button
+            android:id="@+id/button_cad_cand_salvar"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#989898"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="SALVAR"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cad_cand_sigla" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="30sp"
+            android:background="#252525"
+            app:elevation="10dp"
+            app:itemIconSize="30sp"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="#ffffff"
+            app:menu="@menu/menu_admin"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

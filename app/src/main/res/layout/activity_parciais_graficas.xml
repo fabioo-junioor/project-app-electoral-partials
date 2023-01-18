@@ -31,18 +31,49 @@
             app:itemIconTint="@color/white"
             app:srcCompat="@android:drawable/ic_popup_sync" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChart"
+        <TextView
+            android:id="@+id/text_parcial_app"
             android:layout_width="match_parent"
-            android:layout_height="250sp"
-            android:layout_margin="5sp"
-            android:visibility="visible"
-            tools:visibility="visible">
-
-        </com.github.mikephil.charting.charts.BarChart>
+            android:layout_height="60sp"
+            android:paddingTop="15sp"
+            android:paddingBottom="15sp"
+            android:text="Parciais"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"/>
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_margin="5sp"
+            android:padding="10sp">
+
+        </com.github.mikephil.charting.charts.PieChart>
+
+        <TextView
+            android:id="@+id/text_parcial_tse"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:paddingTop="15sp"
+            android:paddingBottom="15sp"
+            android:text="Parciais Tse"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart2"
             android:layout_width="match_parent"
             android:layout_height="300sp"
             android:layout_margin="5sp"

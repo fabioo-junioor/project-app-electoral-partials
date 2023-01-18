@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#575757"
+    tools:context=".AvaliarAdmin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_aval_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:text="AVALIARD DADOS"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"/>
+
+        <EditText
+            android:id="@+id/input_aval_id_dados_urna"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="3sp"
+            android:background="@drawable/minhas_cores_inputs"
+            android:elevation="10dp"
+            android:ems="10"
+            android:hint="Id escolhido"
+            android:inputType="number"
+            android:paddingLeft="10sp"
+            android:radius="5dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/button_aval_salvar"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#989898"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="SALVAR"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="30sp"
+            android:background="#252525"
+            app:elevation="10dp"
+            app:itemIconSize="30sp"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="#ffffff"
+            app:menu="@menu/menu_admin"/>
+    </LinearLayout>
+</ScrollView>

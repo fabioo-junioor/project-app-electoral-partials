@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 17-Jan-2023 às 00:23
+-- Tempo de geração: 18-Jan-2023 às 03:30
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `candidatos` (
   `idEstado` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`idCandidato`),
   KEY `idEstado` (`idEstado`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `candidatos`
@@ -49,26 +49,7 @@ INSERT INTO `candidatos` (`idCandidato`, `nome`, `numero`, `categoria`, `sigla`,
 (3, 'Jair Messias Bolsonaro', 22, 1, 'pl', NULL),
 (4, 'Luiz Inacio Lula da Silva', 13, 1, 'pt', NULL),
 (5, 'Padre Kelmon', 14, 1, 'ptb', NULL),
-(6, 'Roberto Argenta', 20, 2, 'psc', 21),
-(7, 'Carlos Messalla Lima da Rosa', 21, 2, 'pcb', 21),
-(8, 'Eduardo Figueiredo Cavalheiro Leite', 45, 2, 'psdb', 21),
-(9, 'Luiz Carlos Heinze', 11, 2, 'pp', 21),
-(10, 'Rejane Silva de Oliveira', 16, 2, 'pstu', 21),
-(11, 'Ana Amelia de Lemos', 555, 3, 'psd', 21),
-(12, 'Nadia Rodrigues Silveira Gerhard', 111, 3, 'pp', 21),
-(13, 'Antonio Hamilton Martins Mourao', 100, 3, 'republicanos', 21),
-(14, 'Olivio de Oliveira Dutra', 131, 3, 'pt', 21),
-(15, 'Paulo Roberto da Rosa', 270, 3, 'dc', 21),
-(16, 'Abrao Fernandes Godois', 5080, 4, 'psol', 21),
-(17, 'Adriana Leite da Silva', 2250, 4, 'pl', 21),
-(18, 'Andre Cassio da Silva Oliveira', 7080, 4, 'avante', 21),
-(19, 'Paula Holzmann de Almeida', 7088, 4, 'avante', 21),
-(20, 'Pedro Soares de Oliveira', 1411, 4, 'ptb', 21),
-(21, 'Ramiro Stallbaum Rosario', 45200, 5, 'psdb', 21),
-(22, 'Adamir Vivan', 44244, 5, 'usniao', 21),
-(23, 'Juares da Costa Martins', 19789, 5, 'pode', 21),
-(24, 'Kerly Ferro', 50003, 5, 'psol', 21),
-(25, 'Luana Neiland da Silva', 14444, 5, 'ptb', 21);
+(26, 'Fabio', 7, 1, 'ss', NULL);
 
 -- --------------------------------------------------------
 
@@ -108,17 +89,19 @@ CREATE TABLE IF NOT EXISTS `dadosurna` (
   KEY `idUser` (`idUser`),
   KEY `idCidade` (`idCidade`),
   KEY `idCandidato` (`idCandidato`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `dadosurna`
 --
 
 INSERT INTO `dadosurna` (`idDadosUrna`, `numZona`, `numSessao`, `idUser`, `idCidade`, `idCandidato`, `totalVotosCandidato`, `totalVotosBrancos`, `totalVotosNulos`, `registroValido`) VALUES
-(21, 20, 15, 4, 4948, 1, 100, 0, 0, 0),
-(20, 20, 5, 4, 4948, 0, 0, 77, 100, 0),
-(18, 20, 5, 4, 4948, 3, 200, 0, 0, 0),
-(19, 20, 5, 4, 4948, 1, 200, 0, 0, 0);
+(36, 55, 10, 5, 1652, 0, 0, 50, 100, 0),
+(31, 5, 2, 5, 1653, 26, 500, 0, 0, 1),
+(32, 5, 2, 5, 1653, 3, 100, 0, 0, 0),
+(33, 11, 56, 5, 1652, 5, 500, 0, 0, 0),
+(34, 200, 14, 5, 1830, 2, 150, 0, 0, 1),
+(35, 200, 14, 5, 1830, 0, 0, 15, 50, 0);
 
 -- --------------------------------------------------------
 
@@ -5776,7 +5759,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -5789,7 +5772,9 @@ INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (4, 'carlos', 'carlos@bol.com', '6das4'),
 (5, 'mario', 'mario@bol.com', '123459'),
 (7, 'raul', 'raul@bol.com', '33335ww'),
-(8, '', '', '');
+(9, '', '', ''),
+(10, '', '', ''),
+(11, '', '', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
