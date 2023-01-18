@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
@@ -18,15 +18,15 @@
             android:layout_height="80dp"
             android:paddingTop="20sp"
             android:paddingBottom="20sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
             android:text="AVALIARD DADOS"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:shadowColor="#000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="5"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/input_aval_id_dados_urna"
@@ -64,6 +64,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationAdmin"
             android:layout_width="match_parent"
@@ -74,6 +75,6 @@
             app:itemIconSize="30sp"
             app:itemIconTint="@color/white"
             app:itemTextColor="#ffffff"
-            app:menu="@menu/menu_admin"/>
+            app:menu="@menu/menu_admin" />
     </LinearLayout>
 </ScrollView>

@@ -67,7 +67,7 @@ class ParciaisGraficas : AppCompatActivity() {
         }
         //graficoPiePresidente()
         consultaParciais()
-        //consultaParciaisTse()
+        consultaParciaisTse()
 
     }
 
@@ -141,12 +141,13 @@ class ParciaisGraficas : AppCompatActivity() {
                             println("total: " + objectUser.get("total").toString())
                             println("nome: " + objectUser.get("nome").toString())
 
-                            pieList.add(PieEntry(objectUser.get("total").toString().toFloat(), objectUser.get("nome").toString()))
+                            pieList2.add(PieEntry(objectUser.get("total").toString().toFloat(), objectUser.get("nome").toString()))
 
                         } else {
                             Timer().schedule(2000) {
                                 println("total: " + objectUser.get("total").toString())
                                 println("nome: " + objectUser.get("nome").toString())
+                                pieList2.add(PieEntry(0f, "vazio"))
 
                             }
                         }

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -19,7 +20,6 @@ import com.example.electoralpartials.model.Cidade
 import com.example.electoralpartials.model.Estado
 import org.json.JSONArray
 import org.json.JSONException
-import java.lang.Integer.parseInt
 import java.text.Normalizer
 import java.util.*
 import kotlin.concurrent.schedule
@@ -48,13 +48,13 @@ class CadUrna : AppCompatActivity() {
 
         binding.buttonCadUrnaSalvar.setOnClickListener{
             val numZona = binding.inputCadUrnaZona.text.toString()
-            val numSessao = binding.inputCadUrnaSessao.text.toString()
+            val numSecao = binding.inputCadUrnaSessao.text.toString()
             val totalVotos = binding.inputCadUrnaTotal.text.toString()
             val votosBrancos = binding.inputCadUrnaBrancos.text.toString()
             val votosNulos = binding.inputCadUrnaNulos.text.toString()
 
-            if(TextUtils.isEmpty(numSessao)){
-                Toast.makeText(this, "Preencha o campo Sessao!", Toast.LENGTH_SHORT).show()
+            if(TextUtils.isEmpty(numSecao)){
+                Toast.makeText(this, "Preencha o campo Seçao!", Toast.LENGTH_SHORT).show()
 
             }else if(TextUtils.isEmpty(numZona)) {
                 Toast.makeText(this, "Preencha o campo Zona!", Toast.LENGTH_SHORT).show()
@@ -68,12 +68,12 @@ class CadUrna : AppCompatActivity() {
                         Toast.makeText(this, "Escolha votos nulos ou total votos", Toast.LENGTH_SHORT).show()
 
                     }else{
-                        cadastraDadosUrna(numZona, numSessao, totalVotos, votosBrancos, votosNulos, presidenteEscolhido)
+                        cadastraDadosUrna(numZona, numSecao, totalVotos, votosBrancos, votosNulos, presidenteEscolhido)
 
                     }
                 }else{
                     if(!(TextUtils.isEmpty(votosBrancos)) && !(TextUtils.isEmpty(votosNulos))){
-                        cadastraDadosUrna(numZona, numSessao, totalVotos, votosBrancos, votosNulos, "vazio")
+                        cadastraDadosUrna(numZona, numSecao, totalVotos, votosBrancos, votosNulos, "vazio")
 
                     }else{
                         Toast.makeText(this, "Preencha brancos e nulos ou total votos", Toast.LENGTH_SHORT).show()
@@ -82,7 +82,6 @@ class CadUrna : AppCompatActivity() {
                 }
             }
         }
-
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.button_graficos_nav -> {
@@ -98,52 +97,57 @@ class CadUrna : AppCompatActivity() {
             }
         }
     }
-    private  fun cadastraDadosUrna(numZona: String, numSessao: String, totalVotos: String,
+    private  fun cadastraDadosUrna(numZona: String, numSecao: String, totalVotos: String,
         votosBrancos: String, votosNulos: String, escolhaPres: String) {
 
         val stringRequest = StringRequest(Request.Method.GET,
-            url+"/insert_cad_urna.php?numZona="+numZona+"&&numSessao="+numSessao+
+            url+"/insert_cad_urna.php?numZona="+numZona+"&&numSecao="+numSecao+
                     "&&totalVotos="+totalVotos+"&&votosBrancos="+votosBrancos+
                     "&&votosNulos="+votosNulos+"&&nomeCandidato="+escolhaPres+
                     "&&emailUser="+emailLogado+"&&nomeCidade="+cidadeEscolhida+"&&regValido="+"0",
             { s ->
                 try {
                     val obj = JSONArray(s)
-                    for (i in 0..obj.length()-1) {
-                        val objectUrna = obj.getJSONObject(i)
-                        if(objectUrna.get("idDadosUrna").toString() != "null"){
-                            println("idDadosUrna: "+ objectUrna.get("idDadosUrna").toString())
-                            Toast.makeText(this, "Presidente já registrado para essa sessao", Toast.LENGTH_SHORT).show()
-                            Timer().schedule(3000){
+                    if(escolhaPres != "vazio"){
+                        for (i in 0..obj.length()-1) {
+                            val objectUrna = obj.getJSONObject(i)
+                            if (objectUrna.get("idDadosUrna").toString() != "null") {
+                                println("idDadosUrna: " + objectUrna.get("idDadosUrna").toString())
+                                Toast.makeText(
+                                    this,
+                                    "Presidente já registrado para essa seçao",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Timer().schedule(2000) {
 
-                            }
-                        }else{
-                            Toast.makeText(this, "Cadastro realizado!", Toast.LENGTH_SHORT).show()
-                            println("idDadosUrna: "+ objectUrna.get("idDadosUrna").toString())
-                            Timer().schedule(2000){
-                                /*println("Nome: "+ cad_nome)
-                                println("Email: "+ cad_email)
-                                println("Senha: "+ cad_senha)
-                                */
+                                }
+                            } else {
+                                Toast.makeText(this, "Cadastro realizado!", Toast.LENGTH_SHORT).show()
+                                println("idDadosUrna: " + objectUrna.get("idDadosUrna").toString())
+                                Timer().schedule(2000) {
 
+                                }
                             }
                         }
-                        /*
-                        if((objectUrna.get("totalVotosBrancos").toString() != "null") && (objectUrna.get("totalVotosNulos").toString() != "null")){
-                            println("totalVotosBrancos: "+ objectUrna.get("totalVotosBrancos").toString())
-                            println("totalVotosNulos: "+ objectUrna.get("totalVotosNulos").toString())
-                            Toast.makeText(this, "Votos brancos e nulos já registrado para essa sessao", Toast.LENGTH_SHORT).show()
-                            Timer().schedule(2000){
+                    }else{
+                        for (i in 0..obj.length()-1) {
+                            val objectUrna = obj.getJSONObject(i)
+                            if((objectUrna.get("totalVotosBrancos").toString() != "null") && (objectUrna.get("totalVotosNulos").toString() != "null")){
+                                println("totalVotosBrancos: "+ objectUrna.get("totalVotosBrancos").toString())
+                                println("totalVotosNulos: "+ objectUrna.get("totalVotosNulos").toString())
+                                Toast.makeText(this, "Votos brancos e nulos já registrado para essa seçao", Toast.LENGTH_SHORT).show()
+                                Timer().schedule(2000){
 
-                            }
-                        }else{
-                            Toast.makeText(this, "Votos brancos e nulos registrado!", Toast.LENGTH_SHORT).show()
-                            println("totalVotosBrancos: "+ objectUrna.get("totalVotosBrancos").toString())
-                            println("totalVotosNulos: "+ objectUrna.get("totalVotosNulos").toString())
-                            Timer().schedule(2000){
+                                }
+                            }else{
+                                Toast.makeText(this, "Votos brancos e nulos registrado!", Toast.LENGTH_SHORT).show()
+                                println("totalVotosBrancos: "+ objectUrna.get("totalVotosBrancos").toString())
+                                println("totalVotosNulos: "+ objectUrna.get("totalVotosNulos").toString())
+                                Timer().schedule(2000){
 
+                                }
                             }
-                        }*/
+                        }
                     }
                 } catch (e: JSONException){
                     e.printStackTrace()

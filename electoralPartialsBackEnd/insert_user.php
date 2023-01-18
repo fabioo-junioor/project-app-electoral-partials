@@ -11,6 +11,8 @@ $nome = "mario";
 $senha = "123459";
 $email = "mario@bol.com";
 */
+
+
 $sql = "SELECT `idUsuario` FROM usuario WHERE email = '$email'";
 $executa = mysqli_query($con, $sql) or die (mysqli_error());
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 18-Jan-2023 às 03:30
+-- Tempo de geração: 18-Jan-2023 às 20:02
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `comprovante` (
   `idComprovante` int(11) NOT NULL AUTO_INCREMENT,
   `imagem` text NOT NULL,
   `idUser` int(11) NOT NULL,
-  `numSessao` int(11) NOT NULL,
+  `numSecao` int(11) NOT NULL,
   PRIMARY KEY (`idComprovante`),
   KEY `idUser` (`idUser`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS `dadosurna`;
 CREATE TABLE IF NOT EXISTS `dadosurna` (
   `idDadosUrna` int(11) NOT NULL AUTO_INCREMENT,
   `numZona` int(11) NOT NULL,
-  `numSessao` int(11) NOT NULL,
+  `numSecao` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `idCidade` int(11) NOT NULL,
   `idCandidato` int(11) NOT NULL,
@@ -89,19 +89,24 @@ CREATE TABLE IF NOT EXISTS `dadosurna` (
   KEY `idUser` (`idUser`),
   KEY `idCidade` (`idCidade`),
   KEY `idCandidato` (`idCandidato`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `dadosurna`
 --
 
-INSERT INTO `dadosurna` (`idDadosUrna`, `numZona`, `numSessao`, `idUser`, `idCidade`, `idCandidato`, `totalVotosCandidato`, `totalVotosBrancos`, `totalVotosNulos`, `registroValido`) VALUES
+INSERT INTO `dadosurna` (`idDadosUrna`, `numZona`, `numSecao`, `idUser`, `idCidade`, `idCandidato`, `totalVotosCandidato`, `totalVotosBrancos`, `totalVotosNulos`, `registroValido`) VALUES
 (36, 55, 10, 5, 1652, 0, 0, 50, 100, 0),
 (31, 5, 2, 5, 1653, 26, 500, 0, 0, 1),
 (32, 5, 2, 5, 1653, 3, 100, 0, 0, 0),
 (33, 11, 56, 5, 1652, 5, 500, 0, 0, 0),
 (34, 200, 14, 5, 1830, 2, 150, 0, 0, 1),
-(35, 200, 14, 5, 1830, 0, 0, 15, 50, 0);
+(35, 200, 14, 5, 1830, 0, 0, 15, 50, 0),
+(37, 55, 21, 5, 56, 2, 1000, 0, 0, 0),
+(38, 55, 21, 5, 56, 0, 0, 60, 40, 0),
+(39, 55, 21, 4, 56, 2, 500, 0, 0, 0),
+(40, 55, 21, 5, 56, 3, 501, 0, 0, 0),
+(41, 1232, 10, 5, 55, 2, 1000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5771,10 +5776,7 @@ INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (3, 'maria', 'maria@bol.com', '641654'),
 (4, 'carlos', 'carlos@bol.com', '6das4'),
 (5, 'mario', 'mario@bol.com', '123459'),
-(7, 'raul', 'raul@bol.com', '33335ww'),
-(9, '', '', ''),
-(10, '', '', ''),
-(11, '', '', '');
+(7, 'raul', 'raul@bol.com', '33335ww');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

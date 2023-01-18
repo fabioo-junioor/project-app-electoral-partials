@@ -8,24 +8,28 @@
     tools:context=".CadAdmin">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_cad_cand_titulo"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:paddingTop="20sp"
+            android:paddingTop="30sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
             android:text="CADASTRAR CANDIDATO"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:shadowColor="#000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="5" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_cad_cand_nome"
@@ -131,16 +135,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_cad_cand_sigla" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_marginTop="30sp"
-            android:background="#252525"
-            app:elevation="10dp"
-            app:itemIconSize="30sp"
-            app:itemIconTint="@color/white"
-            app:itemTextColor="#ffffff"
-            app:menu="@menu/menu_admin"/>
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="#252525"
+        app:elevation="10dp"
+        app:itemIconSize="30sp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_admin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

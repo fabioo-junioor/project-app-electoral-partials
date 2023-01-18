@@ -4,7 +4,7 @@ include("connection.php");
 
 $categoria = $_GET['categoria'];
 
-$sql = "SELECT * FROM candidatos WHERE categoria = '$categoria'";
+$sql = "SELECT * FROM candidatos WHERE categoria = '$categoria' ORDER BY nome";
 $executa = mysqli_query($con, $sql) or die (mysqli_error());
 $saida = array();
 

@@ -86,7 +86,7 @@
                 android:layout_height="45sp"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
-                android:text="Sessão:"
+                android:text="Seção:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
