@@ -22,10 +22,53 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="5"
-            android:text="AVALIARD DADOS"
+            android:text="AVALIAR DADOS"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/input_select_estados_aval"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/input_select_cidades_aval"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/input_select_zona_aval"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/input_select_secao_aval"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="3sp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/text_response_dados_aval"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="30sp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <EditText

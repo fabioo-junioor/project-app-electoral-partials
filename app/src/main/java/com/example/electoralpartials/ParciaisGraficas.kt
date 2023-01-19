@@ -67,7 +67,7 @@ class ParciaisGraficas : AppCompatActivity() {
         }
         //graficoPiePresidente()
         consultaParciais()
-        consultaParciaisTse()
+        //consultaParciaisTse()
 
     }
 
@@ -162,7 +162,7 @@ class ParciaisGraficas : AppCompatActivity() {
                     pieChart2.centerText = "Parciais"
                     pieChart2.animateY(2000)
                     pieChart2.setEntryLabelColor(Color.BLACK)
-                    pieChart2.setEntryLabelTextSize(16f)
+                    pieChart2.setEntryLabelTextSize(11f)
                     pieChart2.legend.textColor = Color.WHITE
 
                 } catch (e: JSONException) {

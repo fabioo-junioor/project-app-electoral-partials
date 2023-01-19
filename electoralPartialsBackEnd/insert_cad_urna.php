@@ -31,9 +31,13 @@ include("connection.php");
         */
 
         if($nomeCandidato == "vazio"){
-            $sql = "SELECT totalVotosBrancos, totalVotosNulos FROM dadosurna WHERE numSecao = '$numSecao'
+            $sql = "SELECT totalVotosBrancos, totalVotosNulos FROM dadosurna 
+                    WHERE numZona = '$numZona'
+                    AND numSecao = '$numSecao'
+                    AND idCidade = (SELECT idMunicipio FROM municipio WHERE nome = '$nomeCidade')
                     AND idUser = (SELECT idUsuario FROM usuario WHERE email = '$emailUser')
-                    AND totalVotosBrancos <> 0 AND totalVotosNulos <> 0";
+                    AND totalVotosBrancos <> 0
+                    AND totalVotosNulos <> 0";
             
             $executa = mysqli_query($con, $sql) or die (mysqli_error());
             
@@ -65,7 +69,10 @@ include("connection.php");
 
             }
         }else{
-            $sql3 = "SELECT idDadosUrna FROM dadosurna WHERE numSecao = '$numSecao'
+            $sql3 = "SELECT idDadosUrna FROM dadosurna
+                    WHERE numZona = '$numZona'
+                    AND numSecao = '$numSecao'
+                    AND idCidade = (SELECT idMunicipio FROM municipio WHERE nome = '$nomeCidade')
                     AND idUser = (SELECT idUsuario FROM usuario WHERE email = '$emailUser')
                     AND idCandidato = (SELECT idCandidato FROM candidatos WHERE nome = '$nomeCandidato')";
             $executa3 = mysqli_query($con, $sql3) or die (mysqli_error());
