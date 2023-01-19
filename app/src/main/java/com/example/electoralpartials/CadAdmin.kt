@@ -42,6 +42,12 @@ class CadAdmin : AppCompatActivity() {
                     startActivity(likeCand)
                     true
                 }
+                R.id.button_add_cand_admin -> {
+                    val cadAdmin = Intent(this, AdicionarAdmin::class.java)
+                    println("MUDOU PARA TELA ADICIONAR ADMIN!")
+                    startActivity(cadAdmin)
+                    true
+                }
                 else -> {
                     false
 
@@ -76,9 +82,9 @@ class CadAdmin : AppCompatActivity() {
                 try {
                     val obj = JSONArray(s)
                     for (i in 0..obj.length()-1) {
-                        val objectUser = obj.getJSONObject(i)
-                        if(objectUser.get("idCandidato").toString() != "null"){
-                            println("IdCandidato: "+ objectUser.get("idCandidato").toString())
+                        val objectCand = obj.getJSONObject(i)
+                        if(objectCand.get("idCandidato").toString() != "null"){
+                            println("IdCandidato: "+ objectCand.get("idCandidato").toString())
                             Toast.makeText(this, "Esse numero já existe", Toast.LENGTH_SHORT).show()
                             Timer().schedule(3000){
 

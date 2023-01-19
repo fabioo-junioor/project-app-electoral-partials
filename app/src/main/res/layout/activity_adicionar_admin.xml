@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#575757"
+    tools:context=".AdicionarAdmin">
+
+
+    <TextView
+        android:id="@+id/text_cad_add_admin"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingTop="30sp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="ADICIONAR ADMINISTRADOR"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/input_select_users"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="3sp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="100dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_cad_add_admin" />
+
+    <Button
+        android:id="@+id/button_cad_admin_salvar"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#989898"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="ADICIONAR PRIVILÉGIO"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_select_users" />
+
+    <Button
+        android:id="@+id/button_remover_admin_salvar"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#989898"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="REMOVER PRIVILÉGIO"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_cad_admin_salvar" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="#252525"
+        app:elevation="10dp"
+        app:itemIconSize="30sp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_admin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

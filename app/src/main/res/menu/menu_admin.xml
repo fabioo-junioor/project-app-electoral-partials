@@ -3,8 +3,13 @@
 
     <item
         android:id="@+id/button_add_cand_nav"
+        android:icon="@drawable/ic_baseline_person_add_24"
+        android:title="Add Candidato" />
+
+    <item
+        android:id="@+id/button_add_cand_admin"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="Adiconar" />
+        android:title="Add Administrador" />
 
     <item
         android:id="@+id/button_like_cand_nav"

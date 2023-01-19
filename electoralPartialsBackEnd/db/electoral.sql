@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 18-Jan-2023 às 20:02
+-- Tempo de geração: 19-Jan-2023 às 23:48
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `dadosurna` (
   KEY `idUser` (`idUser`),
   KEY `idCidade` (`idCidade`),
   KEY `idCandidato` (`idCandidato`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `dadosurna`
@@ -106,7 +106,9 @@ INSERT INTO `dadosurna` (`idDadosUrna`, `numZona`, `numSecao`, `idUser`, `idCida
 (38, 55, 21, 5, 56, 0, 0, 60, 40, 0),
 (39, 55, 21, 4, 56, 2, 500, 0, 0, 0),
 (40, 55, 21, 5, 56, 3, 501, 0, 0, 0),
-(41, 1232, 10, 5, 55, 2, 1000, 0, 0, 0);
+(41, 1232, 10, 5, 55, 2, 1000, 0, 0, 0),
+(42, 55, 21, 2, 56, 26, 1000, 0, 0, 0),
+(43, 55, 21, 2, 59, 26, 1000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5763,6 +5765,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
+  `admin` tinyint(4) NOT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
@@ -5770,13 +5773,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
-(1, 'admin', 'admin@admin.com', '55355'),
-(2, 'pedro', 'pedro@bol.com', '5555'),
-(3, 'maria', 'maria@bol.com', '641654'),
-(4, 'carlos', 'carlos@bol.com', '6das4'),
-(5, 'mario', 'mario@bol.com', '123459'),
-(7, 'raul', 'raul@bol.com', '33335ww');
+INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`, `admin`) VALUES
+(1, 'admin', 'admin@admin.com', '55355', 1),
+(2, 'pedro', 'pedro@bol.com', '5555', 2),
+(3, 'maria', 'maria@bol.com', '641654', 0),
+(4, 'carlos', 'carlos@bol.com', '6das4', 0),
+(5, 'mario', 'mario@bol.com', '123459', 0),
+(7, 'raul', 'raul@bol.com', '33335ww', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

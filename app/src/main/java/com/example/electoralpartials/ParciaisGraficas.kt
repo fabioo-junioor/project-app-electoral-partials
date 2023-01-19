@@ -83,17 +83,17 @@ class ParciaisGraficas : AppCompatActivity() {
                     pieList = ArrayList()
 
                     for (i in 0..obj.length() - 1) {
-                        val objectUser = obj.getJSONObject(i)
-                        if (objectUser.get("total").toString() != "0") {
-                            println("total: " + objectUser.get("total").toString())
-                            println("nome: " + objectUser.get("nome").toString())
+                        val objectParciais = obj.getJSONObject(i)
+                        if (objectParciais.get("total").toString() != "0") {
+                            println("total: " + objectParciais.get("total").toString())
+                            println("nome: " + objectParciais.get("nome").toString())
 
-                            pieList.add(PieEntry(objectUser.get("total").toString().toFloat(), objectUser.get("nome").toString()))
+                            pieList.add(PieEntry(objectParciais.get("total").toString().toFloat(), objectParciais.get("nome").toString()))
 
                         } else {
                             Timer().schedule(2000) {
-                                println("total: " + objectUser.get("total").toString())
-                                println("nome: " + objectUser.get("nome").toString())
+                                println("total: " + objectParciais.get("total").toString())
+                                println("nome: " + objectParciais.get("nome").toString())
                                 pieList.add(PieEntry(0f, "vazio"))
 
                             }
@@ -136,17 +136,17 @@ class ParciaisGraficas : AppCompatActivity() {
                     pieList2 = ArrayList()
 
                     for (i in 0..obj.length() - 1) {
-                        val objectUser = obj.getJSONObject(i)
-                        if (objectUser.get("total").toString() != "0") {
-                            println("total: " + objectUser.get("total").toString())
-                            println("nome: " + objectUser.get("nome").toString())
+                        val objectParciaisTse = obj.getJSONObject(i)
+                        if (objectParciaisTse.get("total").toString() != "0") {
+                            println("total: " + objectParciaisTse.get("total").toString())
+                            println("nome: " + objectParciaisTse.get("nome").toString())
 
-                            pieList2.add(PieEntry(objectUser.get("total").toString().toFloat(), objectUser.get("nome").toString()))
+                            pieList2.add(PieEntry(objectParciaisTse.get("total").toString().toFloat(), objectParciaisTse.get("nome").toString()))
 
                         } else {
                             Timer().schedule(2000) {
-                                println("total: " + objectUser.get("total").toString())
-                                println("nome: " + objectUser.get("nome").toString())
+                                println("total: " + objectParciaisTse.get("total").toString())
+                                println("nome: " + objectParciaisTse.get("nome").toString())
                                 pieList2.add(PieEntry(0f, "vazio"))
 
                             }

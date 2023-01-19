@@ -58,38 +58,6 @@ class CadUser : AppCompatActivity() {
 
         }
     }
-    /*
-    private fun addNovoUsuario(cad_nome: String, cad_email: String, cad_senha: String) {
-        val stringRequest = object: StringRequest(Request.Method.POST, url+"/insert_user.php",
-        Response.Listener<String> { response ->
-            try {
-                val obj = JSONObject(response)
-                println("error-> "+obj.get("idUsuario"))
-
-            }catch (e: JSONException){
-                e.printStackTrace()
-
-            }
-        }, object: Response.ErrorListener{
-                override fun onErrorResponse(error: VolleyError?) {
-                    TODO("Not yet implemented")
-                }
-        }) {
-            @Throws(AuthFailureError::class)
-            override fun getParams(): MutableMap<String, String>? {
-                val params = HashMap<String, String>()
-                params.put("nome", cad_nome)
-                params.put("email", cad_email)
-                params.put("senha", cad_senha)
-                return params
-
-            }
-        }
-        VolleySingleton.instance?.addToRequestQueue(stringRequest)
-
-
-    }
-    */
     private fun addNovoUsuario(cad_nome: String, cad_email: String, cad_senha: String) {
         val stringRequest = StringRequest(com.android.volley.Request.Method.GET,
             url+"/insert_user.php?nome="+cad_nome+"&&email="+cad_email+"&&senha="+cad_senha,

@@ -61,6 +61,12 @@ class AvaliarAdmin : AppCompatActivity() {
                     startActivity(addCand)
                     true
                 }
+                R.id.button_add_cand_admin -> {
+                    val addAdmin = Intent(this, AdicionarAdmin::class.java)
+                    println("MUDOU PARA TELA ADICIONAR ADMIN!")
+                    startActivity(addAdmin)
+                    true
+                }
                 else -> {
                     false
 
@@ -172,11 +178,10 @@ class AvaliarAdmin : AppCompatActivity() {
                 try {
                     val obj = JSONArray(s)
                     for (i in 0..obj.length()-1) {
-                        val objectCidade = obj.getJSONObject(i)
+                        val objectZona = obj.getJSONObject(i)
                         val zona = Zona()
 
-                        zona.setNumero(objectCidade.get("numZona").toString())
-
+                        zona.setNumero(objectZona.get("numZona").toString())
                         zonas.add(zona.numero.toString())
 
                     }
@@ -220,11 +225,10 @@ class AvaliarAdmin : AppCompatActivity() {
                 try {
                     val obj = JSONArray(s)
                     for (i in 0..obj.length()-1) {
-                        val objectCidade = obj.getJSONObject(i)
+                        val objectSecao = obj.getJSONObject(i)
                         val secao = Secao()
 
-                        secao.setNumero(objectCidade.get("numSecao").toString())
-
+                        secao.setNumero(objectSecao.get("numSecao").toString())
                         secoes.add(secao.numero.toString())
 
                     }
