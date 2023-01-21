@@ -341,16 +341,27 @@ class AvaliarAdmin : AppCompatActivity() {
                     val obj = JSONArray(s)
                     for (i in 0..obj.length()-1) {
                         val objectUser = obj.getJSONObject(i)
-                        if(parseInt(objectUser.get("idDadosUrna").toString()) != 0){
-                            println("IdDadosUrna: "+ objectUser.get("idDadosUrna").toString())
-                            Toast.makeText(this, "Essa seção já foi registrada", Toast.LENGTH_SHORT).show()
-                            Timer().schedule(2000){
+                        if(objectUser.get("idDadosUrna").toString() != "null"){
+                            if(objectUser.get("idDadosUrna").toString() != "0"){
+                                println("IdDadosUrna: "+ objectUser.get("idDadosUrna").toString())
+                                Toast.makeText(this, "Essa seção já foi registrada!", Toast.LENGTH_SHORT).show()
+                                Timer().schedule(2000){
 
+                                }
+
+                            }else{
+                                println("IdDadosUrna: "+ objectUser.get("idDadosUrna").toString())
+                                Toast.makeText(this, "Registro aceito!", Toast.LENGTH_SHORT).show()
+                                Timer().schedule(2000){
+
+
+                                }
+                                //break
                             }
                         }else{
-                            Toast.makeText(this, "Registro aceito!", Toast.LENGTH_SHORT).show()
+                            println("IdDadosUrna: "+ objectUser.get("idDadosUrna").toString())
+                            Toast.makeText(this, "Informe id de usuario da lista!", Toast.LENGTH_SHORT).show()
                             Timer().schedule(2000){
-
 
                             }
                         }
