@@ -92,6 +92,10 @@ class CadUrna : AppCompatActivity() {
             startActivity(Intent(this, CadUrnaFoto::class.java))
 
         }
+        binding.buttonLogoutUser.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+
+        }
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.button_graficos_nav -> {

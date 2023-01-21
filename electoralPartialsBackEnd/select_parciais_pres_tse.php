@@ -5,7 +5,8 @@ include("connection2.php");
 if(isset($_GET["op"]) == "1"){
     $sql = "SELECT sum(qt_votos) AS total, NM_VOTAVEL AS nome FROM votacao_secao_tse
     GROUP BY nome
-    ORDER BY total DESC";
+    ORDER BY total DESC
+    LIMIT 3";
     
     $executa = mysqli_query($con2, $sql) or die (mysqli_error());
     

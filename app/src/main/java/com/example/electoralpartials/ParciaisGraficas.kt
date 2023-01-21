@@ -67,7 +67,7 @@ class ParciaisGraficas : AppCompatActivity() {
         }
         //graficoPiePresidente()
         consultaParciais()
-        //consultaParciaisTse()
+        consultaParciaisTse()
 
     }
 

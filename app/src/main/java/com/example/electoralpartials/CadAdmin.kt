@@ -34,6 +34,10 @@ class CadAdmin : AppCompatActivity() {
             cadAdmin()
 
         }
+        binding.buttonLogoutAdmin.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+
+        }
         binding.bottomNavigationAdmin.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.button_like_cand_nav -> {
