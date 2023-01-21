@@ -271,7 +271,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:backgroundTint="#252525"
-                android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:shadowColor="#000000"
                 android:shadowDx="2"
@@ -280,6 +279,7 @@
                 app:icon="@drawable/ic_baseline_add_a_photo_24"
                 app:iconPadding="0dp"
                 app:iconSize="40dp"
+                app:iconGravity="textStart"
                 app:iconTint="#ffffff" />
 
         </LinearLayout>

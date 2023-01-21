@@ -88,6 +88,10 @@ class CadUrna : AppCompatActivity() {
                 }
             }
         }
+        binding.buttonCadUrnaPhoto.setOnClickListener {
+            startActivity(Intent(this, CadUrnaFoto::class.java))
+
+        }
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.button_graficos_nav -> {

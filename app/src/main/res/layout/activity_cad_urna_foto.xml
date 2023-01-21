@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#575757"
+    tools:context=".CadUrnaFoto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_cad_voltar_foto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:background="#00FFFFFF"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:icon="?attr/homeAsUpIndicator"
+            app:iconGravity="textStart"
+            app:iconSize="35sp"
+            app:iconTint="#ffffff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_cad_urna_foto_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:text="REGISTRAR FOTO"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"/>
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <Button
+            android:id="@+id/button_cad_urna_select_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#252525"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            app:icon="@drawable/ic_baseline_add_a_photo_24"
+            app:iconPadding="0dp"
+            app:iconSize="40dp"
+            app:iconGravity="textStart"
+            app:iconTint="#ffffff" />
+
+        <Button
+            android:id="@+id/button_cad_urna_foto_salvar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#989898"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="SALVAR"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>
