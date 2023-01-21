@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                             }else{
                                 emailLogado = email_user
                                 emailLogadoPerm = objectUser.get("admin").toString()
+                                emailLogadoId = objectUser.get("idUsuario").toString()
                                 Timer().schedule(2000){
                                     navegarTelas(2)
 

@@ -9,6 +9,25 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView_titulo_login_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingTop="20sp"
+        android:paddingBottom="20sp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="PARCIAIS ELEITORAIS"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/text_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +41,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_titulo_login_user" />
 
     <TextView
         android:id="@+id/text_senha"
@@ -98,18 +117,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_senha" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="156dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@android:drawable/ic_delete" />
-
     <Button
         android:id="@+id/link_cadastrar_se"
         android:layout_width="140dp"
@@ -128,7 +135,7 @@
         android:shadowDy="2"
         android:shadowRadius="3"
         android:text="CADASTRAR-SE"
-        android:textColor="#FF0000"
+        android:textColor="#F83B3B"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
