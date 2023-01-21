@@ -6,7 +6,7 @@ $numZona = intval($_GET['numZona']);
 $numSecao = intval($_GET['numSecao']);
 $nomeCidade = $_GET['nomeCidade'];
 
-$sql = "SELECT idUser, numSecao, (SELECT nome FROM candidatos c WHERE `c`.idCandidato = `d`.idCandidato) AS nome, totalVotosCandidato, totalVotosBrancos, totalVotosNulos
+$sql = "SELECT idUser, idCandidato, idCidade, numSecao, (SELECT nome FROM candidatos c WHERE `c`.idCandidato = `d`.idCandidato) AS nome, totalVotosCandidato, totalVotosBrancos, totalVotosNulos
         FROM dadosurna d
         WHERE registroValido = 0
         and idCidade = (SELECT idMunicipio FROM municipio WHERE nome = '$nomeCidade')
@@ -21,7 +21,9 @@ $cont = 0;
 
 while($row = mysqli_fetch_array($executa)){
     array_push($saida, array("user"=>$row['idUser'],
+                            "idCidade"=>$row['idCidade'],
                             "secao"=>$row['numSecao'],
+                            "idCandidato"=>$row['idCandidato'],
                             "nomeC"=>$row['nome'],
                             "votos"=>$row['totalVotosCandidato'],
                             "brancos"=>$row['totalVotosBrancos'],
@@ -36,7 +38,9 @@ if($cont > 0){
 
 }else{
     array_push($saida, array("user"=>"null",
+                            "idCidade"=>"null",
                             "secao"=>"null",
+                            "idCandidato"=>"null",
                             "nomeC"=>"null",
                             "votos"=>"null",
                             "brancos"=>"null",

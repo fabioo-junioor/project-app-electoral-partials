@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 19-Jan-2023 às 23:48
+-- Tempo de geração: 21-Jan-2023 às 05:27
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -49,7 +49,7 @@ INSERT INTO `candidatos` (`idCandidato`, `nome`, `numero`, `categoria`, `sigla`,
 (3, 'Jair Messias Bolsonaro', 22, 1, 'pl', NULL),
 (4, 'Luiz Inacio Lula da Silva', 13, 1, 'pt', NULL),
 (5, 'Padre Kelmon', 14, 1, 'ptb', NULL),
-(26, 'Fabio', 7, 1, 'ss', NULL);
+(26, 'Fabio Junior', 7, 1, 'ss', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,9 +62,16 @@ CREATE TABLE IF NOT EXISTS `comprovante` (
   `idComprovante` int(11) NOT NULL AUTO_INCREMENT,
   `imagem` text NOT NULL,
   `idUser` int(11) NOT NULL,
+  `idCidade` int(11) NOT NULL,
+  `idCandidato` int(11) NOT NULL,
+  `numZona` int(11) NOT NULL,
   `numSecao` int(11) NOT NULL,
   PRIMARY KEY (`idComprovante`),
-  KEY `idUser` (`idUser`)
+  KEY `idUser` (`idUser`),
+  KEY `idCidade` (`idCidade`),
+  KEY `idCandidato` (`idCandidato`),
+  KEY `numZona` (`numZona`),
+  KEY `numSecao` (`numSecao`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -89,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `dadosurna` (
   KEY `idUser` (`idUser`),
   KEY `idCidade` (`idCidade`),
   KEY `idCandidato` (`idCandidato`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `dadosurna`
@@ -102,13 +109,15 @@ INSERT INTO `dadosurna` (`idDadosUrna`, `numZona`, `numSecao`, `idUser`, `idCida
 (33, 11, 56, 5, 1652, 5, 500, 0, 0, 0),
 (34, 200, 14, 5, 1830, 2, 150, 0, 0, 1),
 (35, 200, 14, 5, 1830, 0, 0, 15, 50, 0),
-(37, 55, 21, 5, 56, 2, 1000, 0, 0, 0),
-(38, 55, 21, 5, 56, 0, 0, 60, 40, 0),
-(39, 55, 21, 4, 56, 2, 500, 0, 0, 0),
-(40, 55, 21, 5, 56, 3, 501, 0, 0, 0),
+(37, 55, 21, 5, 56, 2, 1000, 0, 0, 1),
+(38, 55, 21, 5, 56, 0, 0, 60, 40, 1),
+(39, 55, 21, 4, 56, 2, 600, 0, 0, 0),
+(40, 55, 21, 5, 56, 3, 501, 0, 0, 1),
 (41, 1232, 10, 5, 55, 2, 1000, 0, 0, 0),
 (42, 55, 21, 2, 56, 26, 1000, 0, 0, 0),
-(43, 55, 21, 2, 59, 26, 1000, 0, 0, 0);
+(43, 55, 21, 2, 59, 26, 1000, 0, 0, 0),
+(44, 157, 5, 2, 4948, 5, 57, 0, 0, 0),
+(45, 157, 5, 2, 4948, 0, 0, 320, 200, 0);
 
 -- --------------------------------------------------------
 
@@ -5775,9 +5784,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`, `admin`) VALUES
 (1, 'admin', 'admin@admin.com', '55355', 1),
-(2, 'pedro', 'pedro@bol.com', '5555', 2),
+(2, 'pedro', 'pedro@bol.com', '5555', 0),
 (3, 'maria', 'maria@bol.com', '641654', 0),
-(4, 'carlos', 'carlos@bol.com', '6das4', 0),
+(4, 'carlos', 'carlos@bol.com', '6das4', 2),
 (5, 'mario', 'mario@bol.com', '123459', 0),
 (7, 'raul', 'raul@bol.com', '33335ww', 0);
 COMMIT;

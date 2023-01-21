@@ -5,17 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#575757"
-    tools:context=".AvaliarAdmin">
+    tools:context=".AvaliarAdmin"
+    tools:ignore="SpeakableTextPresentCheck">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationAdmin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_aval_titulo"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:paddingTop="20sp"
             android:paddingBottom="20sp"
             android:shadowColor="#000000"
@@ -31,51 +36,60 @@
         <Spinner
             android:id="@+id/input_select_estados_aval"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown" />
 
         <Spinner
             android:id="@+id/input_select_cidades_aval"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown" />
 
         <Spinner
             android:id="@+id/input_select_zona_aval"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown" />
 
         <Spinner
             android:id="@+id/input_select_secao_aval"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown" />
 
-        <TextView
-            android:id="@+id/text_response_dados_aval"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:paddingTop="30sp"
-            android:shadowColor="#000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="5"
-            android:text="..."
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_height="350dp">
+
+            <TextView
+                android:id="@+id/text_response_dados_aval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:text="aguarde..."
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </ScrollView>
 
         <EditText
             android:id="@+id/input_aval_id_dados_urna"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_margin="3sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/minhas_cores_inputs"
             android:elevation="10dp"
             android:ems="10"
@@ -92,32 +106,44 @@
             android:textSize="16sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
-            android:id="@+id/button_aval_salvar"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#989898"
-            android:shadowColor="#000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="5"
-            android:text="SALVAR"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/button_aval_salvar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#989898"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:text="SALVAR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationAdmin"
             android:layout_width="match_parent"
             android:layout_height="60sp"
-            android:layout_marginTop="30sp"
             android:background="#252525"
             app:elevation="10dp"
             app:itemIconSize="30sp"
             app:itemIconTint="@color/white"
             app:itemTextColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_admin" />
+
     </LinearLayout>
+
 </ScrollView>

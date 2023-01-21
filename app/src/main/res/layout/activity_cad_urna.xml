@@ -49,14 +49,14 @@
         <Spinner
             android:id="@+id/input_select_estados"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown" />
 
         <Spinner
             android:id="@+id/input_select_cidades"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown" />
 
@@ -71,6 +71,7 @@
                 android:layout_height="45sp"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
+                android:paddingLeft="5sp"
                 android:text="Zona:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
@@ -86,6 +87,7 @@
                 android:layout_height="45sp"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
+                android:paddingLeft="5sp"
                 android:text="Seção:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
@@ -167,7 +169,7 @@
         <Spinner
             android:id="@+id/input_select_presidente"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="wrap_content"
             android:layout_margin="3sp"
             android:spinnerMode="dropdown"
             android:splitMotionEvents="false" />
@@ -226,20 +228,45 @@
             android:textColorHint="#FFFFFF"
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/button_cad_urna_salvar"
-            android:layout_width="350dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#989898"
-            android:shadowColor="#000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="5"
-            android:text="SALVAR"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_cad_urna_salvar"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#989898"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:text="SALVAR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_cad_urna_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="#252525"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                app:icon="@drawable/ic_baseline_add_a_photo_24"
+                app:iconPadding="0dp"
+                app:iconSize="40dp"
+                app:iconTint="#ffffff" />
+
+        </LinearLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"

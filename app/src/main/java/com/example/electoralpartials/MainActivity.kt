@@ -1,11 +1,11 @@
 package com.example.electoralpartials
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType.*
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
@@ -19,6 +19,7 @@ import kotlin.concurrent.schedule
 private  lateinit var  binding: ActivityMainBinding
 var emailLogado: String = ""
 var emailLogadoPerm: String = ""
+var emailLogadoId: String = ""
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,13 +85,15 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this, "Login efetuado", Toast.LENGTH_SHORT).show()
                             if((Integer.parseInt(objectUser.get("admin").toString()) == 1) || (Integer.parseInt(objectUser.get("admin").toString()) == 2)){
                                 emailLogado = email_user
-                                emailLogado = objectUser.get("admin").toString()
+                                emailLogadoPerm = objectUser.get("admin").toString()
+                                emailLogadoId = objectUser.get("idUsuario").toString()
                                 Timer().schedule(2000){
                                     navegarTelas(3)
 
                                 }
                             }else{
                                 emailLogado = email_user
+                                emailLogadoPerm = objectUser.get("admin").toString()
                                 Timer().schedule(2000){
                                     navegarTelas(2)
 
@@ -126,5 +129,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, CadAdmin::class.java))
 
         }
+    }
+    fun getEmailLogado(): String? {
+        return emailLogado
+
+    }
+    fun getEmailLogadoPerm(): String? {
+        return emailLogadoPerm
+
+    }
+    fun getEmailLogadoId(): String? {
+        return emailLogadoId
+
     }
 }

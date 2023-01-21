@@ -53,6 +53,16 @@ class AvaliarAdmin : AppCompatActivity() {
         val estados = mutableListOf<String>()
         mostrarListaEstados(estados)
 
+        binding.buttonAvalSalvar.setOnClickListener {
+            val idEscolhidoAval = binding.inputAvalIdDadosUrna.text.toString()
+            if(TextUtils.isEmpty(idEscolhidoAval)){
+                Toast.makeText(this, "Preencha o campo Id escolhido!", Toast.LENGTH_SHORT).show()
+
+            }else{
+                enviaAvaliacao(idEscolhidoAval)
+
+            }
+        }
         binding.bottomNavigationAdmin.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.button_add_cand_nav -> {
@@ -272,29 +282,36 @@ class AvaliarAdmin : AppCompatActivity() {
                 try {
                     val obj = JSONArray(s)
                     val dados = mutableListOf<String>()
+                    var novoUser = "0"
                     for (i in 0..obj.length() - 1) {
                         val objectUser = obj.getJSONObject(i)
                         if (objectUser.get("user").toString() != "null") {
+
+
                             if(objectUser.get("votos").toString() != "0"){
-                                println("user-: " + objectUser.get("user").toString())
-                                println("secao-: " + objectUser.get("secao").toString())
-                                println("nome-: " + objectUser.get("nomeC").toString())
+                                if(novoUser != objectUser.get("user").toString()){
+                                    dados.add("\n\nUser: "+objectUser.get("user").toString()+
+                                            "  Secao: "+objectUser.get("secao").toString()+
+                                            "\nNome: "+objectUser.get("nomeC").toString()+
+                                            "\nTotal Votos: "+objectUser.get("votos").toString())
+                                    novoUser = objectUser.get("user").toString()
 
-                                dados.add("User: "+objectUser.get("user").toString())
-                                dados.add("Secao: "+objectUser.get("secao").toString())
-                                dados.add("\nNome: "+objectUser.get("nomeC").toString())
-                                //binding.textResponseDadosAval.text = dados.toString()
 
+                                }else{
+                                    dados.add("\nNome: "+objectUser.get("nomeC").toString()+
+                                            "\nTotal Votos: "+objectUser.get("votos").toString())
+
+                                }
                             }
                             if(objectUser.get("brancos").toString() != "0"){
                                 println("votos brancos-: " + objectUser.get("brancos").toString())
                                 println("votos nulos-: " + objectUser.get("nulos").toString())
-                                dados.add("brancos: "+objectUser.get("brancos").toString())
+                                dados.add("\nbrancos: "+objectUser.get("brancos").toString())
                                 dados.add("nulos: "+objectUser.get("nulos").toString())
                                 //binding.textResponseDadosAval.text = dados.toString()
 
                             }
-                            dados.add("\n")
+
                             binding.textResponseDadosAval.text = dados.toString()
                         } else {
                             //println("votos brancos-: " + objectUser.get("votos brancos").toString())
@@ -308,6 +325,42 @@ class AvaliarAdmin : AppCompatActivity() {
                 }
             }, { error: VolleyError? ->
                 println("Erro ")
+
+            })
+        val requestQueue = Volley.newRequestQueue(this)
+        requestQueue.add<String>(stringRequest)
+
+    }
+    fun enviaAvaliacao(idEscolhidoAval: String){
+        val stringRequest = StringRequest(com.android.volley.Request.Method.GET,
+            url+"/insert_aval_aprovada.php?numZona="+ zonaEscolhidoAval+
+                    "&&numSecao="+ secaoEscolhidaAval+"&&idUser="+idEscolhidoAval+
+                    "&&nomeCidade="+ cidadeEscolhidaAval,
+            { s ->
+                try {
+                    val obj = JSONArray(s)
+                    for (i in 0..obj.length()-1) {
+                        val objectUser = obj.getJSONObject(i)
+                        if(parseInt(objectUser.get("idDadosUrna").toString()) != 0){
+                            println("IdDadosUrna: "+ objectUser.get("idDadosUrna").toString())
+                            Toast.makeText(this, "Essa seção já foi registrada", Toast.LENGTH_SHORT).show()
+                            Timer().schedule(2000){
+
+                            }
+                        }else{
+                            Toast.makeText(this, "Registro aceito!", Toast.LENGTH_SHORT).show()
+                            Timer().schedule(2000){
+
+
+                            }
+                        }
+                    }
+                } catch (e: JSONException){
+                    e.printStackTrace()
+
+                }
+            }, {
+                    error: VolleyError? -> println("Erro ")
 
             })
         val requestQueue = Volley.newRequestQueue(this)

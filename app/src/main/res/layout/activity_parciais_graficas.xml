@@ -18,12 +18,12 @@
 
         <ImageButton
             android:id="@+id/button_refresh_graficos"
-            android:layout_width="60sp"
-            android:layout_height="50sp"
+            android:layout_width="50sp"
+            android:layout_height="40sp"
             android:layout_gravity="end"
             android:layout_marginTop="5sp"
             android:layout_marginRight="5sp"
-            android:layout_marginBottom="20sp"
+            android:layout_marginBottom="5sp"
             android:background="#FFFFFF"
             android:backgroundTint="#252525"
             android:elevation="10sp"

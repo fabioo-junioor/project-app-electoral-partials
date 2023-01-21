@@ -30,6 +30,8 @@ val url = "http://10.0.2.2/electoralPartialsBackEnd"
 var estadoEscolhido: String = ""
 var cidadeEscolhida: String = ""
 var presidenteEscolhido: String = ""
+var zonaEscolhida: String = ""
+var secaoEscolhida: String = ""
 
 class CadUrna : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,11 +70,15 @@ class CadUrna : AppCompatActivity() {
                         Toast.makeText(this, "Escolha votos nulos ou total votos", Toast.LENGTH_SHORT).show()
 
                     }else{
+                        zonaEscolhida = numZona
+                        secaoEscolhida = numSecao
                         cadastraDadosUrna(numZona, numSecao, totalVotos, votosBrancos, votosNulos, presidenteEscolhido)
 
                     }
                 }else{
                     if(!(TextUtils.isEmpty(votosBrancos)) && !(TextUtils.isEmpty(votosNulos))){
+                        zonaEscolhida = numZona
+                        secaoEscolhida = numSecao
                         cadastraDadosUrna(numZona, numSecao, totalVotos, votosBrancos, votosNulos, "vazio")
 
                     }else{
@@ -306,6 +312,27 @@ class CadUrna : AppCompatActivity() {
         var strNoAccent = Normalizer.normalize(str, Normalizer.Form.NFD)
         strNoAccent = strNoAccent.replace("[^\\p{ASCII}]".toRegex(), "")
         return strNoAccent
+
+    }
+    fun getUser(): String? {
+        val userId = MainActivity().getEmailLogadoId()
+        return userId
+
+    }
+    fun getCandidato(): String? {
+        return presidenteEscolhido
+
+    }
+    fun getCidade(): String? {
+        return cidadeEscolhida
+
+    }
+    fun getNumZona(): String? {
+        return zonaEscolhida
+
+    }
+    fun getNumSecao(): String? {
+        return secaoEscolhida
 
     }
 }

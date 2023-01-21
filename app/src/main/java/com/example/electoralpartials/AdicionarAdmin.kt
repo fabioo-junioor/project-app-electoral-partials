@@ -20,6 +20,7 @@ import com.example.electoralpartials.databinding.ActivityCadAdminBinding
 import com.example.electoralpartials.databinding.ActivityCadUserBinding
 import com.example.electoralpartials.model.Estado
 import com.example.electoralpartials.model.User
+import com.example.electoralpartials.model.UserLogado
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -43,13 +44,26 @@ class AdicionarAdmin : AppCompatActivity() {
         val users = mutableListOf<String>()
         mostrarListaUsers(users)
 
-        binding.buttonCadAdminSalvar.setOnClickListener{
-            addAdministrador(userEscolhido, "2")
+        val emailLogado = MainActivity().getEmailLogado()
+        val emailLogadoPerm = MainActivity().getEmailLogadoPerm()
 
+        binding.buttonCadAdminSalvar.setOnClickListener{
+            if (emailLogadoPerm != "1"){
+                Toast.makeText(this, "Voce não tem permissão!", Toast.LENGTH_SHORT).show()
+
+            }else{
+                addAdministrador(userEscolhido, "2")
+
+            }
         }
         binding.buttonRemoverAdminSalvar.setOnClickListener{
-           addAdministrador(userEscolhido, "0")
+            if (emailLogadoPerm != "1"){
+                Toast.makeText(this, "Voce não tem permissão!", Toast.LENGTH_SHORT).show()
 
+            }else{
+                addAdministrador(userEscolhido, "0")
+
+            }
         }
         binding.bottomNavigationAdmin.setOnItemSelectedListener {
             when (it.itemId) {
@@ -113,9 +127,7 @@ class AdicionarAdmin : AppCompatActivity() {
                 userEscolhido = removeAccent(vetor[p2]).toString()
                 println("User escolhido: " + userEscolhido)
 
-
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
@@ -130,11 +142,19 @@ class AdicionarAdmin : AppCompatActivity() {
                     for (i in 0..obj.length()-1) {
                         val objectUser = obj.getJSONObject(i)
                         if(objectUser.get("idUsuario").toString() != "0"){
-                            println("IdUsuario: "+ objectUser.get("idUsuario").toString())
-                            Toast.makeText(this, "Esse usuario já é admin", Toast.LENGTH_SHORT).show()
-                            Timer().schedule(2000){
+                            if(op == "2"){
+                                println("IdUsuario: "+ objectUser.get("idUsuario").toString())
+                                Toast.makeText(this, "Esse usuario já é admin", Toast.LENGTH_SHORT).show()
+                                Timer().schedule(2000){
+
+                                }
+                            }else{
+                                println("IdUsuario: "+ objectUser.get("idUsuario").toString())
+                                Toast.makeText(this, "Esse usuario não é admin", Toast.LENGTH_SHORT).show()
+                                Timer().schedule(2000){
 
 
+                                }
                             }
                         }else{
                             Toast.makeText(this, "Alteração realizada!", Toast.LENGTH_SHORT).show()

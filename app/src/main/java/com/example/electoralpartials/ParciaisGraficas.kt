@@ -104,12 +104,12 @@ class ParciaisGraficas : AppCompatActivity() {
                     pieChart.data = pieData
                     pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS, 255)
                     pieDataSet.valueTextColor = Color.BLACK
-                    pieDataSet.valueTextSize = 18f
+                    pieDataSet.valueTextSize = 16f
                     //pieChart.description.text = "Parciaiss"
                     pieChart.centerText = "Parciais"
                     pieChart.animateY(2000)
                     pieChart.setEntryLabelColor(Color.BLACK)
-                    pieChart.setEntryLabelTextSize(16f)
+                    pieChart.setEntryLabelTextSize(11f)
                     pieChart.legend.textColor = Color.WHITE
 
                 } catch (e: JSONException) {
@@ -157,7 +157,7 @@ class ParciaisGraficas : AppCompatActivity() {
                     pieChart2.data = pieData2
                     pieDataSet2.setColors(ColorTemplate.MATERIAL_COLORS, 255)
                     pieDataSet2.valueTextColor = Color.BLACK
-                    pieDataSet2.valueTextSize = 18f
+                    pieDataSet2.valueTextSize = 16f
                     //pieChart.description.text = "Parciaiss"
                     pieChart2.centerText = "Parciais"
                     pieChart2.animateY(2000)
