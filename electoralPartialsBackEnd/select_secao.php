@@ -26,7 +26,7 @@ if($cont > 0){
     
 
 }else{
-    array_push($saida, array("numSecao"=>"sem secao"));
+    array_push($saida, array("numSecao"=>"Sem secoes para esta zona"));
     
     $saida = converteArrayParaUtf8($saida);
     echo json_encode($saida);

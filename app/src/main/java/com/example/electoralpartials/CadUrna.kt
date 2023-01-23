@@ -26,6 +26,7 @@ import kotlin.concurrent.schedule
 
 private lateinit var binding: ActivityCadUrnaBinding
 val url = "http://10.0.2.2/electoralPartialsBackEnd"
+//val url = "https://patrimoniosdonafrancisca.site/electoralPartialsBackEnd"
 
 var estadoEscolhido: String = ""
 var cidadeEscolhida: String = ""

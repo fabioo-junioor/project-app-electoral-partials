@@ -25,7 +25,7 @@ if($cont > 0){
     
 
 }else{
-    array_push($saida, array("numZona"=>"sem zona"));
+    array_push($saida, array("numZona"=>"Sem zonas para esta cidade"));
     
     $saida = converteArrayParaUtf8($saida);
     echo json_encode($saida);
